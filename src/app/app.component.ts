@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { WalletServiceService } from './services/wallet-service.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'swap-home';
+  title = 'house-swap-dapp';
+  walletConnected = false;
+
+  constructor(private walletService: WalletServiceService) {
+
+  }
+
+  async connectWallet() {
+    await this.walletService.loadSigner();
+  }
 }
